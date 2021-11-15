@@ -3,11 +3,12 @@ CREATE TABLE usuario(
 nombre varchar(50),
 apellido varchar(50),
 email varchar(70) PRIMARY KEY,
-telefono varchar(12),
+
 tipo varchar(30));
 
 
 CREATE TABLE telefono(
+    telefono varchar(12),
 email varchar(70),
     telefono_fijo int (6),
  telefino_celular int (10),
