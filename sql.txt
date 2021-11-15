@@ -1,0 +1,29 @@
+CREATE TABLE usuario(
+
+nombre varchar(50),
+apellido varchar(50),
+email varchar(70) PRIMARY KEY,
+telefono varchar(12),
+tipo varchar(30));
+
+
+CREATE TABLE telefono(
+email varchar(70),
+    telefono_fijo int (6),
+ telefino_celular int (10),
+    CONSTRAINT pk_id_usuario PRIMARY KEY(email, telefono),
+    CONSTRAINT fk_id_usuario FOREIGN key(email) REFERENCES usuario(email)
+);
+CREATE TABLE provincia (
+    email varchar(70),
+    id_provincia int (2) PRIMARY KEY,
+nombre_provincia varchar(70),
+CONSTRAINT pk_id_usuario PRIMARY KEY(email,  id_provincia),
+ CONSTRAINT fk_id_usuario FOREIGN key(email) REFERENCES usuario(email));
+
+CREATE TABLE distrito (
+ id_provincia int (2),
+id int (2) ,
+nombre_provincia varchar(70),
+CONSTRAINT pk_id_usuario PRIMARY KEY(id_provincia, id),
+CONSTRAINT fk_id_provincia FOREIGN KEY(id) REFERENCES provincia(id));
