@@ -22,9 +22,17 @@ INNER JOIN provincia AS p ON u.provincia=p.id_provincia");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>laboratorio3</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   
 </head>
+<header >
+ 
+<div class=" mb-2 bg-primary text-white"> <center><h2>Laboratorio 3</h2></div>
+
+
+</header>
 <body>
-<div class="container">
+
+<center><div class="container">
 <form  class="row g-3" method="post" action="secciones/insertarUsuario.php">
 <p><?php if(isset($_GET['msg'])) echo $_GET['msg'];?></p>
 
@@ -45,7 +53,7 @@ INNER JOIN provincia AS p ON u.provincia=p.id_provincia");
 <div class="mb-3">
 <label for="telefono" class="col-sm-2 col-form-label">Telelfono</label>
 <input type="text"  name="telelfono">
-</div>
+
 
 
 <div class="col-md-4">
@@ -105,12 +113,15 @@ if ($stmt->rowCount() > 0) { ?>
 <?php }?>
 </select>
 
-</div>
+
 <div class=" button mb-3">
 <button type="submit" class="btn btn-primary">Enviar</button>
 </div>
+</div>
 </form>  
 </div>
+
+<div class="container">
 <table class="table table-hover table table-borderless ">
   
 
@@ -143,6 +154,14 @@ if ($stmt->rowCount() > 0) { ?>
 <?php } ?>
 </tbody>
 </table>
-  
+</div>
+<center><div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header"> Elaborado por : Yury Agrazal</div>
+  <div class="card-body">
+    <h5 class="card-title">Cédula: 8-910-1654</h5>
+    <p class="card-text">Grupo: Ils131</p>
+  </div>
+</div>
+
 </body>
 </html>
