@@ -1,11 +1,138 @@
+
+insert into telefono VALUES('+50767742582','gloriela.camaño@utp.ac.pa','360-2535','67377791');
+insert into provincia values
+	(01, 'Bocas del Toro'),
+	(02, 'Coclé'),
+	(03, 'Colón'),
+	(04, 'Chiriquí'),
+	(05, 'Darién'),
+	(06, 'Herrera'),
+	(07, 'Los Santos'),
+	(08, 'Panamá'),
+	(09, 'Veraguas'),
+	(10, 'Guna Yala, Madugandí y Wargandí'),
+	(11, 'Emberá Wounaan'),
+	(12, 'Ngóbe-Buglé'),
+	(13, 'Panamá Oeste')
+	insert into tipo_usuario values
+	(01, 'Estuadiante'),
+	(02, 'Administrativo'),
+	(03, 'Docente')
+	
+	insert into distrito values
+	(01,01, 'Almirante'),
+	(01,02, 'Bocas del Toro'),
+	(01,03, 'Changuinola'),
+	(01,04, 'Chiriquí Grande'),
+	(04,05, 'Alanje'),
+	(04,06, 'Barú'),
+	(04,07, 'Boquerón'),
+	(04,08, 'Boquete'),
+	(04,09, 'Bugaba'),
+	(04,10, 'David'),
+	(04,11, 'Gualaca'),
+	(04,12, 'Remedios'),
+	(04,13, 'Renacimiento'),
+	(04,14, 'San Félix'),
+	(04,15, 'San Lorenzo'),
+	(04,16, 'Tierras Altas'),
+	(04,17, 'Tolé'),
+	(02,18, 'Aguadulce'),
+	(02,19, 'Antón'),
+	(02,20, 'La Pintada'),
+	(02,21, 'Natá'),
+	(02,22, 'Penonomé'),
+    (03,23 'Colón'),
+	(03,24, 'Chagres'),
+	(03,25, 'Donoso'),
+	(03,26, 'Portobelo'),
+	(03,27, 'Santa Isabel'),
+	(03,28, 'Omar Torrijos Herrera'),
+	(05,29, 'Chepigana'),
+	(05,30, 'Pinogana'),
+	(05,31, 'Santa Fe'),
+	(06,32, 'Chitré'),
+	(06,33, 'Las Minas'),
+	(06,34, 'Los Pozos'),
+	(06,35, 'Ocú'),
+	(06,36, 'Parita'),
+	(06,37, 'Pesé'),
+	(06,38, 'Santa María'),
+	(07,39, 'Guararé'),
+	(07,40, 'Las Tablas'),
+	(07,41, 'Los Santos'),
+	(07,42, 'Macaracas'),
+	(07,43, 'Pedasí'),
+	(07,44, 'Pocrí'),
+	(07,45 'Tonosí'),
+	(08,46, 'Balboa'),
+	(08,47, 'Chepo'),
+	(08,48, 'Chimán'),
+	(08,49, 'Panamá'),
+	(08,50, 'San Miguelito'),
+	(08,51, 'Taboga'),
+	(13,52, 'Arraiján'),
+	(13,53, 'Capira'),
+	(13,54, 'Chame'),
+	(13,55, 'La Chorrera'),
+	(13,56, 'San Carlos'),
+	(09,57, 'Atalaya'),
+	(09,58, 'Calobre'),
+	(09,59, 'Cañazas'),
+	(09,60, 'La Mesa'),
+	(09,61, 'Las Palmas'),
+	(09,62, 'Mariato'),
+	(09,63, 'Montijo'),
+	(09,64, 'Río de Jesús'),
+	(09,65, 'San Francisco'),
+	(09,66, 'Santa Fe'),
+	(09,67, 'Santiago'),
+	(09,68, 'Soná'),
+	(11,69, 'Cémaco'),
+	(11,70, 'Sambú'),
+    (12,71, 'Besikó'),
+	(12,72, 'Kankintú'),
+	(12,73, 'Kusapín'),
+	(12,74, 'Mironó'),
+	(12,75, 'Müna'),
+	(12,76, 'Nole Düima'),
+	(11,77, 'Ñürüm'),
+	(11,78, 'Jirondai'),
+	(11,79, 'Santa Catalina o Calovébora')
+
+insert into usuario VALUES('Gloria','camaño','gloriela.camaño@utp.ac.pa','01','01','01'),
+('Aurora','camaño','Aurora.camaño@utp.ac.pa','01','02','02')
+('Luis','Mata','Luis.mata@utp.ac.pa','01','02','02');
+
+CREATE TABLE tipo_usuario(
+ id_tipo int (2),
+nombre_tipo_usuario varchar(70),
+CONSTRAINT pk_id_tipo PRIMARY KEY(id_tipo));
+
+CREATE TABLE provincia (
+    
+    id_provincia int (2) ,
+nombre_provincia varchar(70),
+CONSTRAINT pk_id_provincia PRIMARY KEY(id_provincia));
+
+ CREATE TABLE distrito (
+ id_provincia int (2),
+nombre_distrito varchar(70),
+CONSTRAINT pk_id_distrito PRIMARY KEY(nombre_distrito),
+CONSTRAINT fk_id_distrito FOREIGN KEY(id_provincia) REFERENCES provincia(id_provincia));
 CREATE TABLE usuario(
 
 nombre varchar(50),
 apellido varchar(50),
-email varchar(70) PRIMARY KEY,
-
-tipo varchar(30));
-
+email varchar(70),
+tipo int(2),
+provincia int (2),
+nombre_distrito varchar(70),
+CONSTRAINT pk_id_usuario PRIMARY KEY (email),
+constraint fk_id_usuario_distrito FOREIGN KEY (nombre_distrito) REFERENCES distrito(nombre_distrito),
+constraint fk_id_usuario_provincia FOREIGN KEY (provincia) REFERENCES provincia(id_provincia),
+constraint fk_id_tipo FOREIGN KEY (tipo) REFERENCES tipo_usuario(id_tipo)
+);
 
 CREATE TABLE telefono(
     telefono varchar(12),
@@ -15,16 +142,3 @@ email varchar(70),
     CONSTRAINT pk_id_usuario PRIMARY KEY(email, telefono),
     CONSTRAINT fk_id_usuario FOREIGN key(email) REFERENCES usuario(email)
 );
-CREATE TABLE provincia (
-    email varchar(70),
-    id_provincia int (2) PRIMARY KEY,
-nombre_provincia varchar(70),
-CONSTRAINT pk_id_usuario PRIMARY KEY(email,  id_provincia),
- CONSTRAINT fk_id_usuario FOREIGN key(email) REFERENCES usuario(email));
-
-CREATE TABLE distrito (
- id_provincia int (2),
-id int (2) ,
-nombre_provincia varchar(70),
-CONSTRAINT pk_id_usuario PRIMARY KEY(id_provincia, id),
-CONSTRAINT fk_id_provincia FOREIGN KEY(id) REFERENCES provincia(id));
